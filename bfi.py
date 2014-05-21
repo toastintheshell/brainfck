@@ -1,6 +1,10 @@
 #!/usr/bin/python    
 
-""" Python BrainFuck interpreter """
+"""     Python BrainFuck interpreter
+    Takes 1 argument, brainfuck code in double quotes
+    The following bf commands appear fully functional: +-<>.
+    The following bf commands are incomplete: ,[]
+    """
 
 import sys
 
@@ -35,13 +39,16 @@ for i in commands:
             print "already at position 0"
         print i
     elif i == "[":
+        # this is a tough one, might change main for loop to while
         print i
     elif i == "]":
+        # similar to [ of course
         print i
     elif i == ".":
         print chr(turing[pos])
         print i
     elif i == ",":
+        # need to grock the precise concept before implementation
         print i
     else: 
         print "what's this "+i+" of which you speak?"

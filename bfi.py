@@ -49,7 +49,7 @@ while iter < len(commands):
         print "nest level: "+str(nest_level)
     elif commands[iter] == "]":
         # similar to [ of course
-        for i in reversed(commands[pos]):
+        for i in reversed(commands[:pos]):
             if nest_level == 0:
                 break
             elif i == "[":

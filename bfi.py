@@ -44,18 +44,27 @@ while iter < len(commands):
         print commands[iter]
     elif commands[iter] == "[":
         # changed for loop to while, now use nest_level value to allow nesting
-        nest_level += 1
+        if turing[pos] == 0:
+            nest_level += 1
+        else:
+            for i in commands[pos+1:]
+                if nest_level != 0:
+                    if i != "]":
+                        nest_level -= 1
+                else: 
+                    break
         print commands[iter]
         print "nest level: "+str(nest_level)
     elif commands[iter] == "]":
         # similar to [ of course
         for i in reversed(commands[:pos]):
             if nest_level == 0:
-                break
+                if turing[pos] != 0:
+                    break
             elif i == "[":
                 nest_level -= 1
             else: 
-                pos -= 1
+                iter -= 1
             #print commands.rfind("[", 0, pos)
             print "nest level: "+str(nest_level)
         print commands[iter]

@@ -2,8 +2,8 @@
 
 """     A 75% FULLY functional Python BrainFuck interpreter
     Takes 1 argument, brainfuck code in double quotes
-    The following bf commands appear fully functional: +-<>.
-    The following bf commands are incomplete: ,[]
+    The following bf commands appear fully functional: +-<>.,
+    The following bf commands are incomplete: []
     """
 
 import sys
@@ -47,7 +47,10 @@ for i in commands:
         # similar to [ of course
         print i
     elif i == ".":
-        print chr(turing[pos])
+        if turing[pos] >= 0:
+            print chr(turing[pos])
+        else:
+            print "cannot display negative number as char"
         print i
     elif i == ",":
         # type a char and press enter, may fix for direct from stdin later.

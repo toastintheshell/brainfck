@@ -15,6 +15,7 @@ turing = [0]
 pos = 0
 x = 0
 iter = 0
+nest_level = 0
 
 if len(sys.argv) > 1:
     commands = sys.argv[1]
@@ -42,10 +43,16 @@ while iter < len(commands):
             print "already at position 0"
         print commands[iter]
     elif commands[iter] == "[":
-        # this is a tough one, might change main for loop to while
+        # changed for loop to while, now use nest_level value to allow nesting
+        nest_level += 1
         print commands[iter]
+        print "nest level: "+str(nest_level)
     elif commands[iter] == "]":
         # similar to [ of course
+        for i in range(nest_level):
+            print commands.rfind("[", 0, pos)
+            nest_level -= 1
+            print "nest level: "+str(nest_level)
         print commands[iter]
     elif commands[iter] == ".":
         if turing[pos] >= 0:
@@ -63,5 +70,6 @@ while iter < len(commands):
     print turing
     print "position: "+str(pos)
     iter += 1
+    print "iteration: "+str(iter)
 
 print "success!"

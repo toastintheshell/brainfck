@@ -1,6 +1,6 @@
 #!/usr/bin/python    
 
-"""     Python BrainFuck interpreter
+"""     A 75% FULLY functional Python BrainFuck interpreter
     Takes 1 argument, brainfuck code in double quotes
     The following bf commands appear fully functional: +-<>.
     The following bf commands are incomplete: ,[]
@@ -13,6 +13,8 @@ print sys.argv
 commands = ""
 turing = [0]
 pos = 0
+x = 0
+
 
 if len(sys.argv) > 1:
     commands = sys.argv[1]
@@ -48,7 +50,9 @@ for i in commands:
         print chr(turing[pos])
         print i
     elif i == ",":
-        # need to grock the precise concept before implementation
+        # type a char and press enter, may fix for direct from stdin later.
+        x = ord(raw_input())
+        turing[pos] = x
         print i
     else: 
         print "what's this "+i+" of which you speak?"

@@ -49,9 +49,14 @@ while iter < len(commands):
         print "nest level: "+str(nest_level)
     elif commands[iter] == "]":
         # similar to [ of course
-        for i in range(nest_level):
-            print commands.rfind("[", 0, pos)
-            nest_level -= 1
+        for i in reversed(commands[pos]):
+            if nest_level == 0:
+                break
+            elif i == "[":
+                nest_level -= 1
+            else: 
+                pos -= 1
+            #print commands.rfind("[", 0, pos)
             print "nest level: "+str(nest_level)
         print commands[iter]
     elif commands[iter] == ".":

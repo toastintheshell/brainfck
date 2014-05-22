@@ -1,9 +1,9 @@
 #!/usr/bin/python    
 
-"""     A 75% FULLY functional Python BrainFuck interpreter
+"""     A slightly malfunctional Python BrainFuck interpreter
     Takes 1 argument, brainfuck code in double quotes
     The following bf commands appear fully functional: +-<>.,
-    The following bf commands are incomplete: []
+    The following bf commands are partially implemented but don't work yet: []
     """
 
 import sys
@@ -47,7 +47,7 @@ while iter < len(commands):
         if turing[pos] == 0:
             nest_level += 1
         else:
-            for i in commands[pos+1:]
+            for i in commands[pos+1:]:
                 if nest_level != 0:
                     if i != "]":
                         nest_level -= 1

@@ -13,7 +13,7 @@ print sys.argv
 commands = ""
 turing = [0]
 pos = 0
-x = 0
+x = 0 # ord of raw char in
 iter = 0
 nest_level = 0
 

@@ -44,6 +44,11 @@ while iter < len(commands):
         print commands[iter]
     elif commands[iter] == "[":
         # changed for loop to while, now use nest_level value to allow nesting
+        #
+        # "if the byte at the data pointer is zero, then instead of moving the 
+        # instruction pointer forward to the next command, jump it forward to 
+        # the command after the matching ] command."
+        #                                                           -wikipedia
         if turing[pos] == 0:
             nest_level += 1
         else:
@@ -57,6 +62,11 @@ while iter < len(commands):
         print "nest level: "+str(nest_level)
     elif commands[iter] == "]":
         # similar to [ of course
+        #
+        # "if the byte at the data pointer is nonzero, then instead of moving 
+        # the instruction pointer forward to the next command, jump it back to 
+        # the command after the matching [ command."
+        #                                                           -wikipedia
         for i in reversed(commands[:pos]):
             if nest_level == 0:
                 if turing[pos] != 0:
